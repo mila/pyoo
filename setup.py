@@ -15,8 +15,8 @@ setup(
     description='Pythonic interface to Apache OpenOffice API (UNO)',
     long_description = open('README.rst').read(),
     author='Miloslav Pojman',
-    author_email='miloslav.pojman@firma.seznam.cz',
-    url='https://github.com/seznam/pyoo',
+    author_email='miloslav.pojman@gmail.com',
+    url='https://github.com/mila/pyoo',
     py_modules=['pyoo'],
     classifiers=[
         'Intended Audience :: Developers',
