@@ -11,7 +11,7 @@ from setuptools import setup
 
 setup(
     name='pyoo',
-    version='1.3',
+    version='1.4.dev',
     description='Pythonic interface to Apache OpenOffice API (UNO)',
     long_description = open('README.rst').read(),
     author='Miloslav Pojman',
