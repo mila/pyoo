@@ -7,7 +7,7 @@ Copyright (c) 2017 Miloslav Pojman
 """
 
 
-from distutils.core import setup
+from setuptools import setup
 
 setup(
     name='pyoo',
