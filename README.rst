@@ -48,23 +48,44 @@ If some important feature missing then the UNO API is always available.
 .. _Python-UNO: http://www.openoffice.org/udk/python/python-bridge.html
 
 
-Requirements
-------------
+Prerequisites
+-------------
 
-PyOO runs on both Python 2 (2.7+) and Python 3 (3.3+).
+PyOO runs on both Python 2 (2.7+) and Python 3 (3.3+) but latest LibreOffice
+releases are likely to support Python 3 only.
 
 The only dependency is the Python-UNO library (imported as a module ``uno``).
-It is often installed with the office suite. On Debian based systems it can by
-installed as ``python-uno`` or ``python3-uno`` package.
+Unfortunately Python-UNO cannot be installed using pip.
+Do NOT install package named ``uno`` available on PyPI - it's not related to LibreOffice.
+
+Debian / Ubuntu
+...............
+
+On Debian based systems Python-UNO can by installed as ``python3-uno`` package.
 
 Obviously you will also need OpenOffice or LibreOffice Calc.
-On Debian systems it is available as ``libreoffice-calc`` package.
+On Debian systems it is available as ``libreoffice-calc`` package. ::
+
+    $ sudo apt-get install libreoffice-calc python3-uno
+
+macOS
+.....
+
+Install LibreOffice, for example using cask_: ::
+
+   $ brew cask install libreoffice
+
+Then use Python binary bundled with the installed application: ::
+
+   $ export PATH=/Applications/LibreOffice.app/Contents/Resources:$PATH
+
+.. _cask: https://caskroom.github.io/
 
 
 Installation
 ------------
 
-PyOO library can be installed from PYPI using pip_ (or easy_install)::
+PyOO library can be installed from PYPI using pip_.::
 
     $ pip install pyoo
 
