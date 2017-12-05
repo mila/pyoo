@@ -19,6 +19,8 @@ import uno
 
 # Filters used when saving document.
 FILTER_PDF_EXPORT = 'writer_pdf_Export'
+FILTER_WRITER_PDF_EXPORT = 'writer_pdf_Export'
+FILTER_CALC_PDF_EXPORT = 'calc_pdf_Export'
 FILTER_EXCEL_97 = 'MS Excel 97'
 FILTER_EXCEL_2007 = 'Calc MS Excel 2007 XML'
 
