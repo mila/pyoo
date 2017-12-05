@@ -668,6 +668,11 @@ class CellRangeTestCase(BaseDocumentTestCase):
         # Border widths are approximate
         self.assertAlmostEqual(100, cells.border_bottom_width, delta=10)
 
+    def test_border_color(self):
+        cells = self.sheet[30:40, 30:40]
+        cells.border_width = 100
+        cells.border_color = 0xFFFF00
+        self.assertEqual(cells.border_color, 0xFFFF00)
 
     # Test number formats:
 
