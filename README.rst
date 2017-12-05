@@ -226,6 +226,7 @@ support many indexing options: ::
 
     >>> # Borders
     >>> cells[:,:].border_width = 100
+    >>> cells[:,:].border_color = 0xFFFF00
     >>> cells[-4:-1,-3:-1].inner_border_width = 50
 
 Number format can be also set but it is locale dependent: ::

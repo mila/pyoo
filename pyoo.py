@@ -1161,6 +1161,36 @@ class CellRange(object):
     border_bottom_width = property(functools.partial(__get_one_border_width, key='BottomBorder'),
                                    functools.partial(__set_one_border_width, key='BottomBorder'))
 
+    def __get_border_color(self):
+        """
+        Gets color of all cell borders
+
+        Returns 0 if cell borders are different.
+        """
+        target = self._get_target()
+        # Get four borders and test if all of them have same color.
+        keys = ('TopBorder', 'RightBorder', 'BottomBorder', 'LeftBorder')
+        lines = target.getPropertyValues(keys)
+        values = [line.Color for line in lines]
+        if any(value != values[0] for value in values):
+            return 0
+        return values[0]
+
+    def __set_border_color(self, value):
+        """
+        Sets color of all cell borders
+        """
+        target = self._get_target()
+        keys = ('TopBorder', 'RightBorder', 'BottomBorder', 'LeftBorder')
+        #Get current values of lines - required to save width
+        oldLines = target.getPropertyValues(keys)
+        #Change colour of all lines to value - Value is hex value of colour 0xFF00FF
+        for line in oldLines:
+            line.Color = value
+        lines = (oldLines[0], oldLines[1], oldLines[2], oldLines[3])
+        target.setPropertyValues(keys, lines)
+    border_color = property(__get_border_color, __set_border_color)
+
     def __get_inner_border_width(self):
         """
         Gets with of inner border between cells (in 1/100 mm).
