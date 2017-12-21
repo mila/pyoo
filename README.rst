@@ -338,5 +338,4 @@ All tests are in the ``test.py`` file: ::
 License
 -------
 
-This library is released under the MIT license. Seet the ``LICENSE`` file.
-Copyright (c) 2016 Seznam.cz, a.s.
+This library is released under the MIT license. See the ``LICENSE`` file.
