@@ -1862,7 +1862,7 @@ class Desktop(_UnoProxy):
         document = self._open_url(url)
         return SpreadsheetDocument(document)
 
-    def open_spreadsheet(self, path, as_template=False):
+    def open_spreadsheet(self, path, as_template=False, read_only=False):
         """
         Opens an exiting spreadsheet document on the local file system.
         """
@@ -1870,6 +1870,11 @@ class Desktop(_UnoProxy):
         if as_template:
             pv = uno.createUnoStruct('com.sun.star.beans.PropertyValue')
             pv.Name = 'AsTemplate'
+            pv.Value = True
+            extra += (pv,)
+        if read_only:
+            pv = uno.createUnoStruct('com.sun.star.beans.PropertyValue')
+            pv.Name = 'ReadOnly'
             pv.Value = True
             extra += (pv,)
         # UNO requires absolute paths
