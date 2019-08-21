@@ -2,7 +2,7 @@
 PyOO - Pythonic interface to Apache OpenOffice API (UNO)
 
 Copyright (c) 2016-2017 Seznam.cz, a.s.
-Copyright (c) 2017 Miloslav Pojman
+Copyright (c) 2017-2019 Miloslav Pojman
 
 """
 
