@@ -1030,6 +1030,9 @@ class SpreadsheetCollectionTestCase(BaseDocumentTestCase):
         with self.assertRaises(KeyError):
             del self.document.sheets['Missing']
 
+
+class SheetTestCase(BaseDocumentTestCase):
+
     def test_sheet_text(self):
         sheet = self.document.sheets[0]
         sheet.name = 'My Sheet'
@@ -1048,6 +1051,20 @@ class SpreadsheetCollectionTestCase(BaseDocumentTestCase):
 
     def test_sheet_index(self):
         self.assertEqual(0, self.document.sheets[0].index)
+
+    def test_delete_rows(self):
+        sheet = self.document.sheets[0]
+        sheet[7, 0].value = 'Will be deleted'
+        self.assertEqual('Will be deleted', sheet[7, 0].value)
+        sheet.delete_rows(7)
+        self.assertNotEqual('Will be deleted', sheet[7, 0].value)
+
+    def test_delete_columns(self):
+        sheet = self.document.sheets[0]
+        sheet[0, 7].value = 'Will be deleted'
+        self.assertEqual('Will be deleted', sheet[0, 7].value)
+        sheet.delete_columns(7)
+        self.assertNotEqual('Will be deleted', sheet[0, 7].value)
 
 
 class NameGeneratorTestCase(unittest.TestCase):

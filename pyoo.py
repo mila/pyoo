@@ -1600,6 +1600,13 @@ class Sheet(TabularCellRange):
         target = self._target.getCharts()
         return ChartCollection(self, target)
 
+    def delete_rows(self, row_index, number_of_rows=1):
+        self._target.Spreadsheet.Rows.removeByIndex(row_index, number_of_rows)
+
+    def delete_columns(self, column_index, number_of_columns=1):
+        self._target.Spreadsheet.Columns.removeByIndex(column_index, number_of_columns)
+
+
 
 class SpreadsheetCollection(NamedCollection):
     """
