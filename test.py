@@ -1052,20 +1052,57 @@ class SheetTestCase(BaseDocumentTestCase):
     def test_sheet_index(self):
         self.assertEqual(0, self.document.sheets[0].index)
 
-    def test_delete_rows(self):
+    def test_delete_rows_single(self):
         sheet = self.document.sheets[0]
         sheet[7, 0].value = 'Will be deleted'
         self.assertEqual('Will be deleted', sheet[7, 0].value)
         sheet.delete_rows(7)
         self.assertNotEqual('Will be deleted', sheet[7, 0].value)
 
-    def test_delete_columns(self):
+    def test_delete_columns_single(self):
         sheet = self.document.sheets[0]
         sheet[0, 7].value = 'Will be deleted'
         self.assertEqual('Will be deleted', sheet[0, 7].value)
         sheet.delete_columns(7)
         self.assertNotEqual('Will be deleted', sheet[0, 7].value)
 
+    def test_delete_rows_multiple(self):
+        sheet = self.document.sheets[0]
+        sheet[7, 0].value = 'Will be deleted'
+        sheet[8, 0].value = 'Will also be deleted'
+        sheet[10, 0].value = 'Will NOT be deleted'
+        self.assertEqual('Will be deleted', sheet[7, 0].value)
+        self.assertEqual('Will also be deleted', sheet[8, 0].value)
+        sheet.delete_rows(7,2)
+        self.assertNotEqual('Will be deleted', sheet[7, 0].value)
+        self.assertNotEqual('Will also be deleted', sheet[8, 0].value)
+        self.assertEqual('Will NOT be deleted', sheet[10, 0].value)
+
+    def test_delete_columns_multiple(self):
+        sheet = self.document.sheets[0]
+        sheet[0, 7].value = 'Will be deleted'
+        sheet[0, 8].value = 'Will also be deleted'
+        sheet[0, 10].value = 'Will NOT be deleted'
+        self.assertEqual('Will be deleted', sheet[0, 7].value)
+        self.assertEqual('Will also be deleted', sheet[0, 8].value)
+        sheet.delete_columns(7, 2)
+        self.assertNotEqual('Will be deleted', sheet[0, 7].value)
+        self.assertNotEqual('Will also be deleted', sheet[0, 8].value)
+        self.assertEqual('Will NOT be deleted', sheet[0, 10].value)
+
+    def test_delete_columns_raise(self):
+        sheet = self.document.sheets[0]
+        with self.assertRaises(ValueError):
+            sheet.delete_columns(1,-1)
+        with self.assertRaises(ValueError):
+            sheet.delete_columns(1,0)
+
+    def test_delete_rows_raise(self):
+        sheet = self.document.sheets[0]
+        with self.assertRaises(ValueError):
+            sheet.delete_rows(1,-1)
+        with self.assertRaises(ValueError):
+            sheet.delete_rows(1,0)
 
 class NameGeneratorTestCase(unittest.TestCase):
 

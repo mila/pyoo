@@ -6,3 +6,5 @@ README.html
 MANIFEST
 /build/
 /dist/
+run_tests.sh
+under-dev
