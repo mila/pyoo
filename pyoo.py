@@ -1601,9 +1601,15 @@ class Sheet(TabularCellRange):
         return ChartCollection(self, target)
 
     def delete_rows(self, row_index, number_of_rows=1):
+        if number_of_rows < 1:
+            raise ValueError('Number of rows to delete must be positive and not zero.')
+
         self._target.Spreadsheet.Rows.removeByIndex(row_index, number_of_rows)
 
     def delete_columns(self, column_index, number_of_columns=1):
+        if number_of_columns < 1:
+            raise ValueError('Number of columns to delete must be positive and not zero.')
+
         self._target.Spreadsheet.Columns.removeByIndex(column_index, number_of_columns)
 
 
