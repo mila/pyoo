@@ -321,6 +321,12 @@ And finally do not forget to close the document: ::
 
     >>> doc.close()
 
+Available File Filters:
+
+  * pyoo.FILTER_WRITER_PDF_EXPORT: Export Writer Document to PDF
+  * pyoo.FILTER_CALC_PDF_EXPORT: Export Calc Spreadsheet to PDF
+  * pyoo.FILTER_EXCEL_97: Microsoft Excel 97/2000/XP
+  * pyoo.FILTER_EXCEL_2007: Microsoft Excel 2007 XML (.xlsx, .xlsm, .xltx, .xltm) 
 
 Testing
 -------
